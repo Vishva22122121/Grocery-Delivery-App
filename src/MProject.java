@@ -81,8 +81,8 @@ public class MProject {
                 try {
                     Connection conn2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/vp", "root", "root");
                     System.out.println("Database connection established.");
-                    String query2 = "SELECT * FROM supplier";
-                    PreparedStatement stmt = conn2.prepareStatement(query2);
+                    String query = "SELECT * FROM supplier WHERE susername = '" + Username + "' AND spassword = '" + Password + "'";
+                    PreparedStatement stmt = conn2.prepareStatement(query);
                     ResultSet result2 = stmt.executeQuery();
                     if (result2.next()) {
                         System.out.println("Login successful!");

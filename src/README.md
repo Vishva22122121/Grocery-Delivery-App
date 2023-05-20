@@ -213,7 +213,8 @@ If there is a result, the total revenue value is extracted from the result set u
 The total revenue is printed to the console.
 The database connection is closed.
 If there's an exception during the database operations, it catches the SQLException and prints an error message.
-Here, are screenshots of some of the outputs:
+Here, are screenshots of some of the outputs: Here, order table is not displayed as well as outputs related to the same because there is error related to order table.
+
 ![Screenshot 2023-05-20 144319](https://github.com/Vishva22122121/Grocery-Delivery-App/assets/118505178/ab6d5cd1-062a-4a68-9c40-aff168bd9aec)
 ![image](https://github.com/Vishva22122121/Grocery-Delivery-App/assets/118505178/c994fe1d-1afe-43ab-b1b4-e2ab10436b0e)
 ![image](https://github.com/Vishva22122121/Grocery-Delivery-App/assets/118505178/62114531-5d1d-456a-99ae-903fae4f5019)

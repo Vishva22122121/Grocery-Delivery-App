@@ -215,6 +215,7 @@ The database connection is closed.
 If there's an exception during the database operations, it catches the SQLException and prints an error message.
 
 
+![Screenshot 2023-05-20 100142](https://github.com/Vishva22122121/Grocery-Delivery-App/assets/118505178/ca0c1778-2742-4e42-a788-eefde87a633a)
 
 
 

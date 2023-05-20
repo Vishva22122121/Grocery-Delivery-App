@@ -18,7 +18,7 @@ public class MProject {
     static int userId;
     static float quantity;
     static int price;
-    static String A, B, C, a, b, c, d,e;
+    static String A, B, C, a, b, c, d,e, f;
     static int orderID;
     static Date currentDate;
    
@@ -395,44 +395,60 @@ public class MProject {
                                 }
                                 break;
                             case "e":
-                            try {
-                                // Establish database connection
-                                Connection connection6 = DriverManager.getConnection("jdbc:mysql://localhost:3306/vp", "root", "root");
-                    
-                                // Create SQL query to retrieve order table for delivery
-                                String query6 = "SELECT orders.userId, orders.itemID, grocery_items.itemName, grocery_items.price, " +
-                                               "orders.quantity, orders.orderID " +
-                                               "FROM orders INNER JOIN grocery_items " +
-                                               "ON orders.itemID = grocery_items.itemID " +
-                                               "WHERE orders.status = 'pending'";
-                    
-                                // Create a Statement object to execute the query
-                                Statement statement = connection6.createStatement();
-                    
-                                // Execute the query and get the ResultSet
-                                ResultSet resultSet = statement.executeQuery(query6);
-                    
-                                // Display the order table for delivery
-                                System.out.println("Order Table for Delivery:");
-                                System.out.println("+-----------------------------------------------------------+");
-                                System.out.println("| User ID | Item ID | Item Name | Price | Quantity | Order ID |");
-                                System.out.println("+-----------------------------------------------------------+");
-                                while (resultSet.next()) {
-                                    int userId = resultSet.getInt("userId");
-                                    String itemId = resultSet.getString("itemID");
-                                    String itemName = resultSet.getString("itemName");
-                                    double price = resultSet.getDouble("price");
-                                    int quantity = resultSet.getInt("quantity");
-                                    int orderId = resultSet.getInt("orderID");
-                                    System.out.format("| %-8d | %-7s | %-9s | $%-5.2f | %-8d | %-8d |%n", userId, itemId, itemName, price, quantity, orderId);
+                                try {
+                                    // Establish database connection
+                                    Connection connection6 = DriverManager.getConnection("jdbc:mysql://localhost:3306/vp", "root", "root");
+                        
+                                    // Create SQL query to retrieve order table for delivery
+                                    String query6 = "SELECT orders.userId, orders.itemID, grocery_items.itemName, grocery_items.price, " +
+                                                "orders.quantity, orders.orderID " +
+                                                "FROM orders INNER JOIN grocery_items " +
+                                                "ON orders.itemID = grocery_items.itemID " +
+                                                "WHERE orders.status = 'pending'";
+                        
+                                    // Create a Statement object to execute the query
+                                    Statement statement = connection6.createStatement();
+                        
+                                    // Execute the query and get the ResultSet
+                                    ResultSet resultSet = statement.executeQuery(query6);
+                        
+                                    // Display the order table for delivery
+                                    System.out.println("Order Table for Delivery:");
+                                    System.out.println("+-----------------------------------------------------------+");
+                                    System.out.println("| User ID | Item ID | Item Name | Price | Quantity | Order ID |");
+                                    System.out.println("+-----------------------------------------------------------+");
+                                    while (resultSet.next()) {
+                                        int userId = resultSet.getInt("userId");
+                                        String itemId = resultSet.getString("itemID");
+                                        String itemName = resultSet.getString("itemName");
+                                        double price = resultSet.getDouble("price");
+                                        int quantity = resultSet.getInt("quantity");
+                                        int orderId = resultSet.getInt("orderID");
+                                        System.out.format("| %-8d | %-7s | %-9s | $%-5.2f | %-8d | %-8d |%n", userId, itemId, itemName, price, quantity, orderId);
+                                    }
+                                    System.out.println("+-----------------------------------------------------------+");
+                        
+                                    // Close the database connection
+                                    connection6.close();
+                                } catch (SQLException e) {
+                                    System.out.println("Error: " + e.getMessage());
                                 }
-                                System.out.println("+-----------------------------------------------------------+");
-                    
-                                // Close the database connection
-                                connection6.close();
-                            } catch (SQLException e) {
-                                System.out.println("Error: " + e.getMessage());
-                            }
+                            case "f":
+                                try {
+                                    Connection conn8 = DriverManager.getConnection("jdbc:mysql://localhost:3306/vp", "root", "root");
+                                    String query8 = "SELECT SUM(price) AS totalRevenue FROM `order`";
+                                    PreparedStatement stmt8 = conn8.prepareStatement(query8);
+                                    ResultSet result8 = stmt8.executeQuery();
+
+                                    if (result.next()) {
+                                        double totalRevenue = result.getDouble("totalRevenue");
+                                        System.out.println("Total Revenue: " + totalRevenue);
+                                    }
+
+                                    conn.close();
+                                } catch (SQLException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                             default:
                                 System.out.println("");
                         }

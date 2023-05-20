@@ -130,8 +130,89 @@ It executes the query and retrieves the result set.
 If the result set has at least one row (indicating a successful login), it displays a menu of options for the admin to choose from.
 It reads the admin's choice from the input.
 - By switch cases:
-It displays admin whether to add a supplier, edit details of supplier, view all suppliers, display all suppliers and displays all the orders.
+It displays admin whether to add a supplier, edit details of supplier, view all suppliers, display all suppliers and displays all the orders, and display total revenue
+-- case"a"
+In this case
+It prompts the admin to enter the supplier's username.
+It reads the supplier's username from the input.
+It prompts the admin to enter the supplier's password.
+It reads the supplier's password from the input.
+It prompts the admin to enter the supplier's phone number.
+It reads the supplier's phone number from the input.
+It prompts the admin to enter the supplier's email.
+It reads the supplier's email from the input.
+It establishes a connection to the MySQL database using the JDBC driver.
+It constructs an SQL query to insert the supplier details into the "supplier" table.
+It prepares a statement with the query and sets the corresponding parameter values.
+It executes the statement to insert the supplier data into the database.
+If the execution is successful, it prints a message indicating that the supplier was added successfully.
+It closes the database connection.
+If there's an exception during the database operations, it catches the SQLException and prints an error message.
 
+--case"b"
+In this case
+It prints a prompt asking the admin to enter the supplier's username.
+It reads the supplier's username from the input.
+It prints a prompt asking the admin to enter the supplier's password.
+It reads the supplier's password from the input.
+It prints a prompt asking the admin to enter the supplier's phone number.
+It reads the supplier's phone number from the input.
+It prints a prompt asking the admin to enter the supplier's email.
+It reads the supplier's email from the input.
+It establishes a connection to the MySQL database using the JDBC driver.
+It constructs an SQL query to update the "supplier" table with the new supplier details.
+A prepared statement is created with the query.
+The supplier details are set as parameters in the prepared statement.
+The executeUpdate method is used to execute the update query and modify the supplier's details in the database.
+If the update is successful, it prints a message indicating that the supplier was edited successfully.
+The database connection is closed.
+If there's an exception during the database operations, it catches the SQLException and prints an error message.
+
+--case"c"
+In this case
+It establishes a connection to the MySQL database using the JDBC driver.
+It constructs an SQL query to select all rows from the "supplier" table.
+A prepared statement is created with the query.
+The executeQuery method is used to execute the query and retrieve the result set.
+It prints a formatted header row for displaying the supplier details in a tabular format.
+It iterates over each row in the result set using a while loop.
+For each row, it retrieves the supplier details (username, password, phone number, email) from the result set.
+It prints the supplier details in a formatted row within the table.
+After printing all rows, it prints a formatted footer row for the table.
+The result set, statement, and database connection are closed.
+If there's an exception during the database operations, it catches the SQLException and prints an error message.
+
+--case"d"
+In this case
+It prints a prompt asking the admin to enter the supplier's username.
+It reads the supplier's username from the input.
+It prints a prompt asking the admin to enter the supplier's password.
+It reads the supplier's password from the input.
+It prints a prompt asking the admin to enter the supplier's phone number.
+It reads the supplier's phone number from the input.
+It prints a prompt asking the admin to enter the supplier's email.
+It reads the supplier's email from the input.
+It establishes a connection to the MySQL database using the JDBC driver.
+It constructs an SQL query to delete the supplier from the "supplier" table based on the provided supplier details.
+A prepared statement is created with the query.
+The supplier details are set as parameters in the prepared statement.
+The execute method is used to execute the delete query and remove the supplier from the database.
+The database connection is closed.
+If there's an exception during the database operations, it catches the SQLException and prints an error message.
+
+--case"e"
+In this case as mentioned above we are displaying order details to admin
+
+--case"f"
+In this case
+The getConnection method establishes a connection to the MySQL database.
+The SQL query uses the SUM function to calculate the total revenue by summing the values in the "price" column of the "order" table.
+A prepared statement is created with the query.
+The executeQuery method is used to execute the query and retrieve the result set.
+If there is a result, the total revenue value is extracted from the result set using the column alias "totalRevenue".
+The total revenue is printed to the console.
+The database connection is closed.
+If there's an exception during the database operations, it catches the SQLException and prints an error message.
 
 
 
